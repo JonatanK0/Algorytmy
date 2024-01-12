@@ -14,7 +14,7 @@ int main() {
     int wyl_liczby[n];
  
     randomF(wyl_liczby, n);
-    cout << endl;
+    cout   << endl;
  
     return 0;
 }
