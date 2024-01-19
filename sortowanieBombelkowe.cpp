@@ -1,32 +1,46 @@
-#include<iostream>
+#include <iostream>
+#include <algorithm>
+ 
 using namespace std;
-
-void sortowanie_babelkowe(int tab[],int n)
-{
-	for(int i=0;i<n;i++)
-		for(int j=1;j<n-i;j++) //pętla wewnętrzna
-		if(tab[j-1]>tab[j])
-			//zamiana miejscami
-			swap(tab[j-1], tab[j]);
+ 
+const int MAX_ROZMIAR = 6;
+ 
+void wypelnijTab(int dane[], int rozmiar) {
+    cout << "Podaj " << rozmiar << " liczb do tablicy:" << endl;
+    for (int i = 0; i < rozmiar; ++i) {
+        cout << "Liczba " << i + 1 << ": ";
+        cin >> dane[i];
+    }
 }
-
-int main()
-{
-	int *tab, n;
-	
-	cout<<"Ile liczb będziesz chciał posortować? ";
-	cin>>n;
-	
-	tab = new int [n]; //przydzielenie pamięci na elementy tablicy
-	//wczytanie liczb
-	for(int i=0;i<n;i++)
-		cin>>tab[i];
-	
-	sortowanie_babelkowe(tab,n);
-	
-	//wypisanie posortowanych elementów
-	for(int i=0;i<n;i++)
-          cout<<tab[i]<<" ";
-
-  return 0;
+ 
+void drukujTab(int dane[], int rozmiar) {
+    for_each(dane, dane + rozmiar, [](int x){ cout << x << " "; });
+    cout << endl;
+}
+ 
+void sortowanieBabelkowe(int dane[], int rozmiar) {
+    for (int i = 0; i < rozmiar - 1; ++i) {
+        for (int j = 0; j < rozmiar - i - 1; ++j) {
+            if (dane[j] > dane[j + 1]) {
+                swap(dane[j], dane[j + 1]);
+                drukujTab(dane, rozmiar);
+            }
+        }
+    }
+}
+ 
+int main() {
+    int dane[MAX_ROZMIAR];
+    int rozmiar = MAX_ROZMIAR;
+ 
+    wypelnijTab(dane, rozmiar);
+    cout << "Tablica przed sortowaniem bąbelkowym:" << endl;
+    drukujTab(dane, rozmiar);
+ 
+    sortowanieBabelkowe(dane, rozmiar);
+ 
+    cout << "Tablica po sortowaniu bąbelkowym:" << endl;
+    drukujTab(dane, rozmiar);
+ 
+    return 0;
 }
