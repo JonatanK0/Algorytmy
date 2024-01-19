@@ -34,8 +34,6 @@ int main() {
     int rozmiar = MAX_ROZMIAR;
  
     wypelnijTab(dane, rozmiar);
-    cout << "Tablica przed sortowaniem bąbelkowym:" << endl;
-    drukujTab(dane, rozmiar);
  
     sortowanieBabelkowe(dane, rozmiar);
  
