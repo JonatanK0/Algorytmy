@@ -23,6 +23,7 @@ void sortowaniePrzezScalanie(int dane[], int poczatek, int koniec) {
         int srodek = poczatek + (koniec - poczatek) / 2;
         sortowaniePrzezScalanie(dane, poczatek, srodek);
         sortowaniePrzezScalanie(dane, srodek + 1, koniec);
+        inplace_merge(dane + poczatek, dane + srodek + 1, dane + koniec + 1);
     }
 }
  
